@@ -75,6 +75,8 @@ Hình bên trái vẽ cây từ trên xuống: gốc ở trên, mỗi tầng là
 
 Khung hình có thanh công cụ ở góc trên bên phải: dấu cộng và trừ để phóng to, thu nhỏ, "Vừa khung" để thu cả cây hoặc đồ thị vào khung xem toàn bộ, "100%" để về kích thước thật. Có thể giữ Ctrl và lăn chuột để phóng to tại chỗ con trỏ, và kéo thả để di chuyển.
 
+Bảng điều khiển bên phải thu gọn được bằng nút "Thu gọn" ở đầu bảng, để hình chiếm cả màn hình. Bấm "Mở bảng" để mở lại.
+
 Dải chú giải ngay dưới hình giải thích các ký hiệu. Với cây:
 
 - Chấm xanh dương ở góc phải nút: nút thuộc vùng chủ thể (người dùng).

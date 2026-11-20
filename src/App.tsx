@@ -55,6 +55,7 @@ export function App() {
   const [result, setResult] = useState<Decision | null>(null)
   const [audit, setAudit] = useState<AuditEntry[]>([])
   const [viewUser, setViewUser] = useState('')
+  const [collapsed, setCollapsed] = useState(false)
 
   const { ds, detection, sample } = applied
   const allRules = useMemo(() => [...ds.edgeRules, ...rules], [ds, rules])
@@ -172,7 +173,7 @@ export function App() {
   const countLabel = ds.tree ? `${ds.tree.order.length} nút, ${ds.tree.maxLevel} tầng` : `${ds.graph!.nodes.length} nút, ${ds.graph!.edges.length} cạnh`
 
   return (
-    <div className={'app' + (wide ? ' wide' : '')}>
+    <div className={'app' + (wide ? ' wide' : '') + (collapsed && !wide ? ' collapsed' : '')}>
       <nav className="rail" aria-label="Các bước">
         <div className="brand">
           <h1>Phân quyền trên NoSQL</h1>
@@ -216,6 +217,12 @@ export function App() {
         </main>
       )}
       <aside className="inspector" aria-label="Bảng điều khiển">
+        {!wide && (
+          <button className="collapse-btn" onClick={() => setCollapsed(!collapsed)} aria-expanded={!collapsed} title={collapsed ? 'Mở bảng điều khiển' : 'Thu gọn bảng điều khiển để xem hình rộng hơn'}>
+            {collapsed ? '‹' : '›'}<span>{collapsed ? 'Mở bảng' : 'Thu gọn'}</span>
+          </button>
+        )}
+        <div className="inspector-body">
         {tab === 'load' && <LoadTab samples={SAMPLES} sampleId={sample?.id} text={text} setText={setText} onSample={applySample} onApply={() => applyText()} detection={detection} forceKind={forceKind} setForceKind={(k) => { setForceKind(k); applyText(k) }} err={err} ds={ds} setRoots={setRoots} />}
         {tab === 'tree' && <TreeTab ds={ds} focusId={focusId} />}
         {tab === 'explain' && <ExplainTab ds={ds} step={step} setStep={setStep} />}
@@ -224,6 +231,7 @@ export function App() {
         {tab === 'view' && <ViewTab ds={ds} rules={allRules} user={viewUser} setUser={setViewUser} action={action} setAction={setAction} ctxText={ctxText} />}
         {tab === 'compare' && <CompareTab ds={ds} rules={allRules} action={action} setAction={setAction} ctxText={ctxText} />}
         {tab === 'safety' && <SafetyTab audit={audit} clear={() => setAudit([])} />}
+        </div>
       </aside>
     </div>
   )

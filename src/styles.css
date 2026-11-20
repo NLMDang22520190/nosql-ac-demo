@@ -243,3 +243,20 @@ table.matrix td.no { background: #FBEAE9; color: #922019; }
   .verdict { animation: settle 0.25s ease-out; }
   @keyframes settle { from { opacity: 0.4; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 }
+
+/* bảng điều khiển bên phải thu gọn được */
+.app.collapsed { grid-template-columns: 252px minmax(0, 1fr) 46px; }
+.inspector { position: relative; }
+.collapse-btn { position: sticky; top: 0; z-index: 3; display: inline-flex; align-items: center; gap: 6px; margin: -8px 0 10px; background: #fff; border: 1px solid #B7C0CF; border-radius: 6px; padding: 3px 10px 3px 8px; cursor: pointer; font-weight: 600; font-size: 12.5px; }
+.collapse-btn:hover { border-color: var(--deep); }
+.collapse-btn:not([aria-expanded=false]) { float: right; }
+.app.collapsed .inspector { padding: 14px 6px; overflow: hidden; }
+.app.collapsed .inspector-body { display: none; }
+.app.collapsed .collapse-btn { flex-direction: column; padding: 10px 6px; margin: 0 auto; float: none; }
+.app.collapsed .collapse-btn span { writing-mode: vertical-rl; }
+@media (max-width: 1180px) {
+  .app.collapsed { grid-template-columns: 1fr; }
+  .app.collapsed .inspector { padding: 10px 14px; }
+  .app.collapsed .collapse-btn { flex-direction: row; }
+  .app.collapsed .collapse-btn span { writing-mode: horizontal-tb; }
+}
