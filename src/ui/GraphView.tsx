@@ -128,7 +128,7 @@ export function GraphView({ graph, marks, selected = [], focus, onSelect, visibl
           const hidden = visible && !visible.nodes.has(n.id)
           const rx = t === 'user' ? H / 2 : t === 'org' ? 3 : t === 'group' ? 12 : 2
           return (
-            <g key={n.id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(n.id)} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={hidden ? 0.15 : 1} data-node={n.id}>
+            <g key={n.id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(n.id)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(n.id) } }} tabIndex={onSelect ? 0 : undefined} role={onSelect ? 'button' : undefined} aria-label={`${TYPE_VI[t] ?? 'nút'}: ${n.id}`} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={hidden ? 0.15 : 1} data-node={n.id}>
               <title>{`${n.id}${n.type ? ' (' + (TYPE_VI[n.type] ?? n.type) + ')' : ''}`}</title>
               <rect width={W} height={H} rx={rx} fill={TYPE_FILL[t] ?? '#EEF0F4'} stroke={TYPE_STROKE[t] ?? '#7A8599'} strokeWidth={1.2} />
               {mk?.tint && <rect width={W} height={H} rx={rx} fill={mk.tint} opacity={mk.tintOpacity ?? 0.4} />}

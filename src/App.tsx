@@ -216,12 +216,13 @@ export function App() {
           <Legend kind={ds.tree ? 'tree' : 'graph'} overlay={tab === 'rules' || tab === 'check'} />
         </main>
       )}
-      <aside className="inspector" aria-label="Bảng điều khiển">
+      <div className="inspector-wrap">
         {!wide && (
-          <button className="collapse-btn" onClick={() => setCollapsed(!collapsed)} aria-expanded={!collapsed} title={collapsed ? 'Mở bảng điều khiển' : 'Thu gọn bảng điều khiển để xem hình rộng hơn'}>
-            {collapsed ? '‹' : '›'}<span>{collapsed ? 'Mở bảng' : 'Thu gọn'}</span>
+          <button className="panel-handle" onClick={() => setCollapsed(!collapsed)} aria-expanded={!collapsed} aria-label={collapsed ? 'Mở bảng điều khiển' : 'Thu gọn bảng điều khiển'} title={collapsed ? 'Mở bảng điều khiển' : 'Thu gọn bảng điều khiển để xem hình rộng hơn'}>
+            {collapsed ? '‹' : '›'}
           </button>
         )}
+      <aside className="inspector" aria-label="Bảng điều khiển">
         <div className="inspector-body">
         {tab === 'load' && <LoadTab samples={SAMPLES} sampleId={sample?.id} text={text} setText={setText} onSample={applySample} onApply={() => applyText()} detection={detection} forceKind={forceKind} setForceKind={(k) => { setForceKind(k); applyText(k) }} err={err} ds={ds} setRoots={setRoots} />}
         {tab === 'tree' && <TreeTab ds={ds} focusId={focusId} />}
@@ -233,6 +234,7 @@ export function App() {
         {tab === 'safety' && <SafetyTab audit={audit} clear={() => setAudit([])} />}
         </div>
       </aside>
+      </div>
     </div>
   )
 }

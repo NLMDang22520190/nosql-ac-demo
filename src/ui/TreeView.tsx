@@ -73,12 +73,13 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
           const label = fitText(n.label, BW - 30)
           const ring = isSel ? '#17202E' : focus === id ? '#F2B01E' : mk?.ring
           return (
-            <g key={id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(id)} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={mk?.dim ? 0.18 : 1} data-node={id}>
+            <g key={id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(id)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(id) } }} tabIndex={onSelect ? 0 : undefined} role={onSelect ? 'button' : undefined} aria-label={`${n.levelName}: ${n.label}`} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={mk?.dim ? 0.18 : 1} data-node={id}>
               <title>{`${n.levelName}: ${n.label}\n${id}`}</title>
               <rect width={BW} height={BH} rx={3} fill="#fff" stroke="#9AA6BA" strokeWidth={1} />
               {mk?.tint && <rect width={BW} height={BH} rx={3} fill={mk.tint} opacity={mk.tintOpacity ?? 0.3} />}
               <rect width={BW} height={4} rx={1.5} fill={base} />
-              {role && <circle cx={BW - 9} cy={BH / 2 + 2} r={3.5} fill={role === 'S' ? '#2447D0' : '#D9650B'} />}
+              {role === 'S' && <circle cx={BW - 9} cy={BH / 2 + 2} r={3.5} fill="#2447D0"><title>Vùng chủ thể</title></circle>}
+              {role === 'O' && <rect x={BW - 12.5} y={BH / 2 - 1.5} width={7} height={7} rx={1} fill="#D9650B"><title>Vùng đối tượng</title></rect>}
               <text x={9} y={BH / 2 + 6} fontSize={12} fontWeight={mk?.bold || isSel || focus === id ? 700 : 400} fill="#17202E">{label}</text>
               {mk?.tag && <text x={BW} y={-4} fontSize={10} fill="#17202E" textAnchor="end" fontWeight={700}>{mk.tag}</text>}
               {ring && <rect x={-3} y={-3} width={BW + 6} height={BH + 6} rx={5} fill="none" stroke={ring} strokeWidth={isSel || focus === id ? 3 : 2.5} />}

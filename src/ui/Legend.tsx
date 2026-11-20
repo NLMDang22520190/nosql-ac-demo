@@ -4,8 +4,8 @@ export function Legend({ kind, overlay }: { kind: 'tree' | 'graph'; overlay: boo
     <div className="legend-bar" aria-label="Chú giải">
       {kind === 'tree' ? (
         <>
-          <span className="lg"><i className="dot subject" />Chấm xanh dương: nút thuộc vùng <b>chủ thể</b> (người dùng)</span>
-          <span className="lg"><i className="dot object" />Chấm cam: nút thuộc vùng <b>đối tượng</b> (tệp, dữ liệu)</span>
+          <span className="lg"><i className="dot subject" />Chấm tròn xanh dương: nút thuộc vùng <b>chủ thể</b> (người dùng)</span>
+          <span className="lg"><i className="dot object" />Ô vuông cam: nút thuộc vùng <b>đối tượng</b> (tệp, dữ liệu)</span>
           <span className="lg"><i className="bar" />Thanh màu trên đầu nút: màu của tầng (đậm là tầng nông, nhạt là tầng sâu)</span>
         </>
       ) : (

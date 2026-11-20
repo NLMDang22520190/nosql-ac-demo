@@ -76,12 +76,15 @@ export function ZoomPane({ width, height, label, children, centerX, resetKey }: 
 
   return (
     <div className="viz-wrap">
+      <div className="viz-bar">
+      <span className="viz-tip">Ctrl + lăn chuột để phóng to hoặc thu nhỏ, kéo thả để di chuyển.</span>
       <div className="viz-tools" role="toolbar" aria-label="Phóng to thu nhỏ">
         <button onClick={() => step(1 / 1.25)} aria-label="Thu nhỏ" title="Thu nhỏ">−</button>
         <span className="pct" aria-live="polite">{Math.round(scale * 100)}%</span>
         <button onClick={() => step(1.25)} aria-label="Phóng to" title="Phóng to">+</button>
         <button onClick={fit} title="Thu vừa khung để xem toàn bộ">Vừa khung</button>
         <button onClick={() => { setZoom(1); center(1) }} title="Kích thước thật">100%</button>
+      </div>
       </div>
       <div
         className="viz-scroll"
@@ -109,7 +112,6 @@ export function ZoomPane({ width, height, label, children, centerX, resetKey }: 
           {children}
         </svg>
       </div>
-      <p className="viz-tip">Ctrl + lăn chuột để phóng to hoặc thu nhỏ, kéo thả để di chuyển.</p>
     </div>
   )
 }
