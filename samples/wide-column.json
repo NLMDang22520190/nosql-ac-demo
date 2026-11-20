@@ -1,0 +1,31 @@
+{
+  "id": "wide-column",
+  "title": "Wide-column (kiểu Cassandra / HBase)",
+  "kind": "wide-column",
+  "description": "5 tầng: Database > Column family > Row > Column > Value. Column family nhanvien chứa người dùng, tailieu chứa tệp.",
+  "subjectRoots": ["CongTyA/nhanvien"],
+  "objectRoots": ["CongTyA/tailieu"],
+  "data": {
+    "CongTyA": {
+      "nhanvien": {
+        "phong_KeToan": { "nhom_thue": "An", "nhom_kiemtoan": "Chi" },
+        "phong_NhanSu": { "nhom_tuyendung": "Dung" }
+      },
+      "tailieu": {
+        "bophan_TaiChinh": { "chinhanh_HN": "baocao_Q3.pdf", "chinhanh_HCM": "baocao_HCM_Q3.pdf" },
+        "bophan_NhanSu": { "chinhanh_HN": "luong_T10.xlsx" }
+      }
+    }
+  },
+  "rules": [
+    { "id": "W1", "subjectAttrs": ["CongTyA/nhanvien/phong_KeToan"], "objectAttrs": ["CongTyA/tailieu/bophan_TaiChinh"], "actions": ["read"], "permission": "allow", "note": "Hàng phong_KeToan đọc hàng bophan_TaiChinh" },
+    { "id": "W2", "subjectAttrs": ["CongTyA/nhanvien/phong_NhanSu"], "objectAttrs": ["CongTyA/tailieu/bophan_NhanSu"], "actions": ["read"], "permission": "allow" },
+    { "id": "W3", "subjectAttrs": ["CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan"], "objectAttrs": ["CongTyA/tailieu/bophan_TaiChinh/chinhanh_HCM"], "actions": ["read"], "permission": "deny", "note": "Cột nhom_kiemtoan bị cấm đọc cột chinhanh_HCM" }
+  ],
+  "scenarios": [
+    { "title": "An đọc báo cáo HCM", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_thue/An", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HCM/baocao_HCM_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Chi đọc báo cáo HCM (W1 cho, W3 cấm)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan/Chi", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HCM/baocao_HCM_Q3.pdf", "ctx": {}, "expect": "deny" },
+    { "title": "Chi đọc báo cáo HN", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan/Chi", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Dũng đọc bảng lương", "subject": "CongTyA/nhanvien/phong_NhanSu/nhom_tuyendung/Dung", "action": "read", "object": "CongTyA/tailieu/bophan_NhanSu/chinhanh_HN/luong_T10.xlsx", "ctx": {}, "expect": "allow" }
+  ]
+}

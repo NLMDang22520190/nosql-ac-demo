@@ -1,0 +1,27 @@
+{
+  "id": "key-value",
+  "title": "Key-value (kiểu Redis)",
+  "kind": "key-value",
+  "description": "4 tầng: Database > Table > Key > Value. Bảng KeToan và NhanSu chứa người dùng (giá trị), bảng TaiChinh và TaiLieuNhanSu chứa tệp.",
+  "subjectRoots": ["CongTyA/KeToan", "CongTyA/NhanSu"],
+  "objectRoots": ["CongTyA/TaiChinh", "CongTyA/TaiLieuNhanSu"],
+  "data": {
+    "CongTyA": {
+      "KeToan": { "nhom_thue": "An", "nhom_kiemtoan": "Chi" },
+      "NhanSu": { "nhom_tuyendung": "Dung" },
+      "TaiChinh": { "chinhanh_HN": "baocao_Q3.pdf", "chinhanh_HCM": "baocao_HCM_Q3.pdf" },
+      "TaiLieuNhanSu": { "chinhanh_HN": "luong_T10.xlsx" }
+    }
+  },
+  "rules": [
+    { "id": "K1", "subjectAttrs": ["CongTyA/KeToan"], "objectAttrs": ["CongTyA/TaiChinh"], "actions": ["read"], "permission": "allow", "note": "Cả bảng KeToan đọc cả bảng TaiChinh (vai trò gắn ở tầng Table)" },
+    { "id": "K2", "subjectLeaf": "CongTyA/KeToan/nhom_kiemtoan/Chi", "subjectAttrs": [], "objectLeaf": "CongTyA/TaiChinh/chinhanh_HCM/baocao_HCM_Q3.pdf", "objectAttrs": [], "actions": ["read"], "permission": "deny", "note": "Chi bị cấm đọc báo cáo HCM" },
+    { "id": "K3", "subjectAttrs": ["CongTyA/NhanSu"], "objectAttrs": ["CongTyA/TaiLieuNhanSu"], "actions": ["read", "write"], "permission": "allow" }
+  ],
+  "scenarios": [
+    { "title": "An đọc báo cáo Q3", "subject": "CongTyA/KeToan/nhom_thue/An", "action": "read", "object": "CongTyA/TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Chi đọc báo cáo HCM (cấm thắng)", "subject": "CongTyA/KeToan/nhom_kiemtoan/Chi", "action": "read", "object": "CongTyA/TaiChinh/chinhanh_HCM/baocao_HCM_Q3.pdf", "ctx": {}, "expect": "deny" },
+    { "title": "Dũng ghi bảng lương", "subject": "CongTyA/NhanSu/nhom_tuyendung/Dung", "action": "write", "object": "CongTyA/TaiLieuNhanSu/chinhanh_HN/luong_T10.xlsx", "ctx": {}, "expect": "allow" },
+    { "title": "Dũng đọc báo cáo Q3 (khác phòng)", "subject": "CongTyA/NhanSu/nhom_tuyendung/Dung", "action": "read", "object": "CongTyA/TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "deny" }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "graph",
+  "title": "Graph (kiểu Neo4j)",
+  "kind": "graph",
+  "description": "Đồ thị có hướng. Thuộc tính của một nút là mọi nút đi tới được qua cạnh (in, works for, belongs to, managed by). Cạnh 'can read' / 'cannot read' chính là luật nhúng trong CSDL (Fig. 10).",
+  "data": {
+    "nodes": [
+      { "id": "An", "type": "user" }, { "id": "Binh", "type": "user" }, { "id": "Chi", "type": "user" }, { "id": "Dung", "type": "user" },
+      { "id": "NhomThue", "type": "group" }, { "id": "NhomKiemToan", "type": "group" }, { "id": "NhomTuyenDung", "type": "group" },
+      { "id": "PhongKeToan", "type": "org" }, { "id": "PhongNhanSu", "type": "org" }, { "id": "BoPhanTaiChinh", "type": "org" }, { "id": "CongTyA", "type": "org" },
+      { "id": "baocao_Q3.pdf", "type": "file" }, { "id": "ngansach_2027.xlsx", "type": "file" }, { "id": "luong_T10.xlsx", "type": "file" }
+    ],
+    "edges": [
+      { "from": "An", "to": "NhomThue", "label": "in" },
+      { "from": "Binh", "to": "NhomThue", "label": "in" },
+      { "from": "Chi", "to": "NhomKiemToan", "label": "in" },
+      { "from": "Dung", "to": "NhomTuyenDung", "label": "in" },
+      { "from": "NhomThue", "to": "PhongKeToan", "label": "works for" },
+      { "from": "NhomKiemToan", "to": "PhongKeToan", "label": "works for" },
+      { "from": "NhomTuyenDung", "to": "PhongNhanSu", "label": "works for" },
+      { "from": "PhongKeToan", "to": "CongTyA", "label": "belongs to" },
+      { "from": "PhongNhanSu", "to": "CongTyA", "label": "belongs to" },
+      { "from": "BoPhanTaiChinh", "to": "CongTyA", "label": "belongs to" },
+      { "from": "baocao_Q3.pdf", "to": "BoPhanTaiChinh", "label": "managed by" },
+      { "from": "ngansach_2027.xlsx", "to": "BoPhanTaiChinh", "label": "managed by" },
+      { "from": "luong_T10.xlsx", "to": "PhongNhanSu", "label": "managed by" },
+      { "from": "NhomThue", "to": "baocao_Q3.pdf", "label": "can read" },
+      { "from": "Binh", "to": "baocao_Q3.pdf", "label": "cannot read" }
+    ]
+  },
+  "rules": [
+    { "id": "G1", "subjectAttrs": ["NhomKiemToan"], "objectAttrs": ["BoPhanTaiChinh"], "actions": ["read"], "permission": "allow", "note": "Nhóm kiểm toán đọc mọi tệp do bộ phận Tài chính quản lý (chuỗi thuộc tính hai phía)" },
+    { "id": "G2", "subjectAttrs": ["PhongNhanSu"], "objectAttrs": ["PhongNhanSu"], "actions": ["read", "write"], "permission": "allow", "note": "Người của phòng Nhân sự đọc/ghi tệp do phòng Nhân sự quản lý" }
+  ],
+  "scenarios": [
+    { "title": "An đọc báo cáo Q3 (cạnh NhomThue -can read-> baocao)", "subject": "An", "action": "read", "object": "baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Bình đọc báo cáo Q3 (cạnh cannot read thắng)", "subject": "Binh", "action": "read", "object": "baocao_Q3.pdf", "ctx": {}, "expect": "deny" },
+    { "title": "An đọc ngân sách 2027 (không có cạnh hay luật)", "subject": "An", "action": "read", "object": "ngansach_2027.xlsx", "ctx": {}, "expect": "deny" },
+    { "title": "Chi đọc ngân sách 2027 (luật G1)", "subject": "Chi", "action": "read", "object": "ngansach_2027.xlsx", "ctx": {}, "expect": "allow" },
+    { "title": "Dũng ghi bảng lương (luật G2)", "subject": "Dung", "action": "write", "object": "luong_T10.xlsx", "ctx": {}, "expect": "allow" }
+  ]
+}

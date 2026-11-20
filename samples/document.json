@@ -1,0 +1,36 @@
+{
+  "id": "document",
+  "title": "Document (kiểu MongoDB)",
+  "kind": "document",
+  "description": "Collection nhanvien chứa các document phòng ban, collection tailieu chứa các document bộ phận. Chủ thể (nhân viên) và đối tượng (tệp) nằm cùng một CSDL, đúng giả định của bài.",
+  "subjectRoots": ["CongTyA/nhanvien"],
+  "objectRoots": ["CongTyA/tailieu"],
+  "data": {
+    "CongTyA": {
+      "nhanvien": [
+        { "_id": "phong_KeToan", "nhom_thue": ["An", "Binh"], "nhom_kiemtoan": ["Chi"] },
+        { "_id": "phong_NhanSu", "nhom_tuyendung": ["Dung"] }
+      ],
+      "tailieu": [
+        { "_id": "bophan_TaiChinh", "chinhanh_HN": ["baocao_Q3.pdf", "ngansach_2027.xlsx"], "chinhanh_HCM": ["baocao_HCM_Q3.pdf"] },
+        { "_id": "bophan_NhanSu", "chinhanh_HN": ["luong_T10.xlsx"] }
+      ]
+    }
+  },
+  "rules": [
+    { "id": "R1", "subjectAttrs": ["CongTyA/nhanvien/phong_KeToan/nhom_thue"], "objectAttrs": ["CongTyA/tailieu/bophan_TaiChinh"], "actions": ["read"], "permission": "allow", "note": "Nhóm thuế đọc mọi tệp của bộ phận Tài chính (một nút mỗi bên, quyền kế thừa xuống field và value)" },
+    { "id": "R2", "subjectAttrs": ["CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan"], "objectAttrs": ["CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN"], "actions": ["read", "write"], "permission": "allow", "note": "Nhóm kiểm toán đọc và ghi tệp chi nhánh Hà Nội của Tài chính" },
+    { "id": "R3", "subjectLeaf": "CongTyA/nhanvien/phong_KeToan/nhom_thue/Binh", "subjectAttrs": [], "objectLeaf": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/ngansach_2027.xlsx", "objectAttrs": [], "actions": ["read"], "permission": "deny", "note": "Riêng Bình bị cấm đọc ngân sách 2027 (cấm thắng cho phép)" },
+    { "id": "R4", "subjectAttrs": ["CongTyA/nhanvien/phong_NhanSu"], "objectAttrs": ["CongTyA/tailieu/bophan_NhanSu"], "actions": ["read"], "permission": "allow", "condition": "gio >= 8 and gio <= 17", "note": "Phòng Nhân sự đọc tệp Nhân sự trong giờ hành chính (điều kiện môi trường, mục 4.7)" }
+  ],
+  "scenarios": [
+    { "title": "An đọc báo cáo Q3 (luật R1, kế thừa xuống tận value)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_thue/An", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "An ghi báo cáo Q3 (không có luật ghi cho nhóm thuế)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_thue/An", "action": "write", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "deny" },
+    { "title": "Bình đọc ngân sách 2027 (R1 cho, R3 cấm: cấm thắng)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_thue/Binh", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/ngansach_2027.xlsx", "ctx": {}, "expect": "deny" },
+    { "title": "Bình đọc báo cáo Q3 (R3 chỉ cấm ngân sách)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_thue/Binh", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Chi (kiểm toán) ghi tệp Hà Nội", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan/Chi", "action": "write", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HN/baocao_Q3.pdf", "ctx": {}, "expect": "allow" },
+    { "title": "Chi đọc báo cáo HCM (R2 chỉ phủ chi nhánh HN, không có luật khác: từ chối mặc định)", "subject": "CongTyA/nhanvien/phong_KeToan/nhom_kiemtoan/Chi", "action": "read", "object": "CongTyA/tailieu/bophan_TaiChinh/chinhanh_HCM/baocao_HCM_Q3.pdf", "ctx": {}, "expect": "deny" },
+    { "title": "Dũng đọc bảng lương lúc 9 giờ (R4 có điều kiện)", "subject": "CongTyA/nhanvien/phong_NhanSu/nhom_tuyendung/Dung", "action": "read", "object": "CongTyA/tailieu/bophan_NhanSu/chinhanh_HN/luong_T10.xlsx", "ctx": { "gio": 9 }, "expect": "allow" },
+    { "title": "Dũng đọc bảng lương lúc 22 giờ (ngoài giờ)", "subject": "CongTyA/nhanvien/phong_NhanSu/nhom_tuyendung/Dung", "action": "read", "object": "CongTyA/tailieu/bophan_NhanSu/chinhanh_HN/luong_T10.xlsx", "ctx": { "gio": 22 }, "expect": "deny" }
+  ]
+}
