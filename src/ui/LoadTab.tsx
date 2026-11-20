@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import type { Detection } from '../core/detect'
 import type { Dataset, Sample } from '../core/dataset'
 import type { DbKind } from '../core/types'
@@ -25,8 +24,7 @@ interface Props {
   setRoots: (s: string[], o: string[]) => void
 }
 
-export function LoadTab({ samples, sampleId, text, setText, onSample, onApply, detection, forceKind, setForceKind, err, ds, setRoots }: Props) {
-  const file = useRef<HTMLInputElement>(null)
+export function LoadTab({ samples, sampleId, onSample, detection, forceKind, setForceKind, err, ds, setRoots }: Props) {
   const level2 = ds.tree ? ds.tree.nodes[ds.tree.rootId].children : []
   const roleOf = (id: string) => (ds.subjectRoots.includes(id) ? 's' : ds.objectRoots.includes(id) ? 'o' : 'n')
   const change = (id: string, role: string) => {
@@ -46,24 +44,9 @@ export function LoadTab({ samples, sampleId, text, setText, onSample, onApply, d
           {samples.map((s) => (
             <button key={s.id} className={'sample' + (sampleId === s.id ? ' active' : '')} onClick={() => onSample(s)}>
               <b>{s.title}</b>
-              <span>{s.description}</span>
             </button>
           ))}
         </div>
-      </section>
-      <section>
-        <h3>Hoặc dán / tải JSON</h3>
-        <textarea className="json" value={text} onChange={(e) => setText(e.target.value)} spellCheck={false} aria-label="JSON của CSDL" />
-        <div className="row">
-          <button className="btn primary" onClick={onApply}>Phân tích dữ liệu này</button>
-          <button className="btn" onClick={() => file.current?.click()}>Tải tệp JSON</button>
-          <input ref={file} type="file" accept=".json,application/json" hidden onChange={async (e) => {
-            const f = e.target.files?.[0]
-            if (f) setText(await f.text())
-            e.target.value = ''
-          }} />
-        </div>
-        {err && <p className="err" role="alert">{err}</p>}
       </section>
       <section>
         <h3>Hệ thống nhận ra: <span className="kind">{KIND_VI[forceKind || detection.kind]}</span></h3>
@@ -80,6 +63,7 @@ export function LoadTab({ samples, sampleId, text, setText, onSample, onApply, d
             <option value="graph">Graph</option>
           </select>
         </label>
+        {err && <p className="err" role="alert">{err}</p>}
         <CodePanel source={detectSrc} marker={marker} title="detect.ts: đoạn mã đưa ra kết luận" height={190} />
       </section>
       <section>

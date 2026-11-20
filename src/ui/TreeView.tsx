@@ -1,14 +1,16 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { LEVEL_NAMES } from '../core/build'
 import type { TreeModel } from '../core/types'
 import type { Marks } from './marks'
 
 // Độ sâu của tầng thể hiện bằng độ đậm của một tông xanh (tầng 1 đậm nhất).
 export const DEPTH = ['#1B2B4B', '#2F4A7D', '#4A6FA5', '#7497C4', '#A5BEDB']
-const COL = 196
-const ROW = 27
-const BW = 172
-const TOP = 54
+const GUT = 118 // cột nhãn tầng bên trái
+const SP = 148 // khoảng cách ngang giữa hai nút lá
+const BW = 136
+const BH = 26
+const ROWH = 96 // chiều cao mỗi dải tầng
+const HEAD = 8
 
 interface Props {
   model: TreeModel
@@ -20,31 +22,37 @@ interface Props {
   focus?: string
 }
 
+/** Cây vẽ từ trên xuống như Fig. 5 của bài: mỗi tầng là một dải ngang, gốc ở trên cùng. */
 export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRoots = [], objectRoots = [], focus }: Props) {
   const layout = useMemo(() => {
     const pos: Record<string, { x: number; y: number }> = {}
-    let row = 0
+    let leaf = 0
     const walk = (id: string): number => {
       const n = model.nodes[id]
       const kids = n.children.map(walk)
-      const y = kids.length ? (kids[0] + kids[kids.length - 1]) / 2 : row++ * ROW
-      pos[id] = { x: (n.level - 1) * COL + 12, y: y + TOP }
-      return y
+      const x = kids.length ? (kids[0] + kids[kids.length - 1]) / 2 : leaf++ * SP
+      pos[id] = { x: GUT + 12 + x, y: HEAD + (n.level - 1) * ROWH + (ROWH - BH) / 2 }
+      return x
     }
     walk(model.rootId)
-    return { pos, h: row * ROW + TOP + 24 }
+    return { pos, w: GUT + 24 + Math.max(leaf, 1) * SP, h: HEAD * 2 + model.maxLevel * ROWH }
   }, [model])
+  const box = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    // đưa nút gốc vào giữa khung nhìn khi đổi dữ liệu
+    const b = box.current
+    if (b) b.scrollLeft = Math.max(0, layout.pos[model.rootId].x + BW / 2 - b.clientWidth / 2)
+  }, [model, layout])
   const names = LEVEL_NAMES[model.kind].slice(0, model.maxLevel)
-  const w = model.maxLevel * COL + 24
   const inRoot = (id: string, roots: string[]) => roots.some((r) => id === r || id.startsWith(r + '/'))
   return (
-    <div className="viz-scroll">
-      <svg width={w} height={layout.h} role="img" aria-label="Cây phân tầng">
+    <div className="viz-scroll" ref={box}>
+      <svg width={layout.w} height={layout.h} role="img" aria-label="Cây phân tầng">
         {names.map((nm, i) => (
           <g key={nm}>
-            <rect x={i * COL} y={0} width={COL} height={layout.h} fill={i % 2 ? 'rgba(23,32,46,0.035)' : 'rgba(255,255,255,0.55)'} />
-            <text x={i * COL + 12} y={22} fontFamily="Bricolage Grotesque, sans-serif" fontSize={15} fontWeight={700} fill={DEPTH[i]}>{`Tầng ${i + 1}`}</text>
-            <text x={i * COL + 12} y={40} fontSize={12} fill="#5B6678">{nm}</text>
+            <rect x={0} y={HEAD + i * ROWH} width={layout.w} height={ROWH} fill={i % 2 ? 'rgba(23,32,46,0.04)' : 'rgba(255,255,255,0.6)'} />
+            <text x={14} y={HEAD + i * ROWH + ROWH / 2 - 2} fontFamily="Bricolage Grotesque, sans-serif" fontSize={16} fontWeight={700} fill={DEPTH[i]}>{`Tầng ${i + 1}`}</text>
+            <text x={14} y={HEAD + i * ROWH + ROWH / 2 + 16} fontSize={12} fill="#5B6678">{nm}</text>
           </g>
         ))}
         {model.order.map((id) => {
@@ -52,12 +60,12 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
           if (!n.parentId) return null
           const a = layout.pos[n.parentId]
           const b = layout.pos[id]
-          const x1 = a.x + BW
-          const y1 = a.y + 11
-          const x2 = b.x
-          const y2 = b.y + 11
-          const dim = marks[id]?.dim
-          return <path key={'e' + id} d={`M${x1},${y1} C${x1 + 14},${y1} ${x2 - 14},${y2} ${x2},${y2}`} fill="none" stroke="#B3BCCB" strokeWidth={1.2} opacity={dim ? 0.15 : 1} />
+          const x1 = a.x + BW / 2
+          const y1 = a.y + BH
+          const x2 = b.x + BW / 2
+          const y2 = b.y
+          const my = (y1 + y2) / 2
+          return <path key={'e' + id} d={`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`} fill="none" stroke="#B3BCCB" strokeWidth={1.3} opacity={marks[id]?.dim ? 0.15 : 1} />
         })}
         {model.order.map((id) => {
           const n = model.nodes[id]
@@ -66,18 +74,18 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
           const base = DEPTH[n.level - 1]
           const isSel = selected.includes(id)
           const role = inRoot(id, subjectRoots) ? 'S' : inRoot(id, objectRoots) ? 'O' : ''
-          const label = n.label.length > 21 ? n.label.slice(0, 20) + '…' : n.label
+          const label = n.label.length > 17 ? n.label.slice(0, 16) + '…' : n.label
           const ring = isSel ? '#17202E' : focus === id ? '#F2B01E' : mk?.ring
           return (
             <g key={id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(id)} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={mk?.dim ? 0.18 : 1} data-node={id}>
               <title>{`${n.levelName}: ${n.label}\n${id}`}</title>
-              <rect width={BW} height={22} rx={3} fill="#fff" stroke="#9AA6BA" strokeWidth={1} />
-              {mk?.tint && <rect width={BW} height={22} rx={3} fill={mk.tint} opacity={mk.tintOpacity ?? 0.3} />}
-              <rect width={5} height={22} rx={1.5} fill={base} />
-              {role && <circle cx={BW - 10} cy={11} r={3.5} fill={role === 'S' ? '#2447D0' : '#D9650B'} />}
-              <text x={12} y={15} fontSize={12} fontWeight={mk?.bold || isSel || focus === id ? 700 : 400} fill="#17202E">{label}</text>
-              {mk?.tag && <text x={BW} y={-3} fontSize={10} fill="#17202E" textAnchor="end" fontWeight={700}>{mk.tag}</text>}
-              {ring && <rect x={-3} y={-3} width={BW + 6} height={28} rx={5} fill="none" stroke={ring} strokeWidth={isSel || focus === id ? 3 : 2.5} />}
+              <rect width={BW} height={BH} rx={3} fill="#fff" stroke="#9AA6BA" strokeWidth={1} />
+              {mk?.tint && <rect width={BW} height={BH} rx={3} fill={mk.tint} opacity={mk.tintOpacity ?? 0.3} />}
+              <rect width={BW} height={4} rx={1.5} fill={base} />
+              {role && <circle cx={BW - 9} cy={BH / 2 + 2} r={3.5} fill={role === 'S' ? '#2447D0' : '#D9650B'} />}
+              <text x={9} y={BH / 2 + 6} fontSize={12} fontWeight={mk?.bold || isSel || focus === id ? 700 : 400} fill="#17202E">{label}</text>
+              {mk?.tag && <text x={BW} y={-4} fontSize={10} fill="#17202E" textAnchor="end" fontWeight={700}>{mk.tag}</text>}
+              {ring && <rect x={-3} y={-3} width={BW + 6} height={BH + 6} rx={5} fill="none" stroke={ring} strokeWidth={isSel || focus === id ? 3 : 2.5} />}
             </g>
           )
         })}

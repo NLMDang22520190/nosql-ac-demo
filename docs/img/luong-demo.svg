@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 330" width="1120" height="330" font-family="'Be Vietnam Pro','Segoe UI',Arial,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6678"/></marker></defs><rect width="1120" height="330" fill="#F4F6F9"/>
+<rect x="16" y="34" width="190" height="150" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<circle cx="44" cy="68" r="15" fill="#1B2B4B"/>
+<text x="44" y="73" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" >1</text>
+<text x="68" y="73" font-size="14.5" fill="#17202E" font-weight="700" text-anchor="start" >Nạp dữ liệu</text>
+<text x="30" y="112" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Vào: một trong 4 mẫu</text>
+<text x="30" y="140" font-size="12" fill="#17202E" font-weight="500" text-anchor="start" >Ra: loại NoSQL và căn cứ</text>
+<line x1="208" y1="109" x2="234" y2="109" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="236" y="34" width="190" height="150" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<circle cx="264" cy="68" r="15" fill="#1B2B4B"/>
+<text x="264" y="73" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" >2</text>
+<text x="288" y="73" font-size="14.5" fill="#17202E" font-weight="700" text-anchor="start" >Cây hoặc đồ thị</text>
+<text x="250" y="112" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Vào: dữ liệu đã nạp</text>
+<text x="250" y="140" font-size="12" fill="#17202E" font-weight="500" text-anchor="start" >Ra: các nút chia theo tầng</text>
+<line x1="428" y1="109" x2="454" y2="109" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="456" y="34" width="190" height="150" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<circle cx="484" cy="68" r="15" fill="#1B2B4B"/>
+<text x="484" y="73" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" >3</text>
+<text x="508" y="73" font-size="14.5" fill="#17202E" font-weight="700" text-anchor="start" >Giải thích cách chia</text>
+<text x="470" y="112" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Vào: cây hoặc đồ thị</text>
+<text x="470" y="140" font-size="12" fill="#17202E" font-weight="500" text-anchor="start" >Ra: JSON, nút và dòng mã</text>
+<line x1="648" y1="109" x2="674" y2="109" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="676" y="34" width="190" height="150" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<circle cx="704" cy="68" r="15" fill="#1B2B4B"/>
+<text x="704" y="73" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" >4</text>
+<text x="728" y="73" font-size="14.5" fill="#17202E" font-weight="700" text-anchor="start" >Luật phân quyền</text>
+<text x="690" y="112" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Vào: nút bạn bấm trên hình</text>
+<text x="690" y="140" font-size="12" fill="#17202E" font-weight="500" text-anchor="start" >Ra: danh sách luật</text>
+<line x1="868" y1="109" x2="894" y2="109" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="896" y="34" width="190" height="150" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<circle cx="924" cy="68" r="15" fill="#1B2B4B"/>
+<text x="924" y="73" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" >5</text>
+<text x="948" y="73" font-size="14.5" fill="#17202E" font-weight="700" text-anchor="start" >Kiểm tra quyền</text>
+<text x="910" y="112" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Vào: ai, làm gì, với cái gì</text>
+<text x="910" y="140" font-size="12" fill="#17202E" font-weight="500" text-anchor="start" >Ra: được hay từ chối, và vì sao</text>
+<text x="16" y="226" font-size="12.5" fill="#5B6678" font-weight="500" text-anchor="start" >Dùng được sau khi đã có luật (bước 4) và kết quả kiểm tra (bước 5)</text>
+<rect x="16" y="242" width="270" height="52" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="151" y="273" font-size="13.5" fill="#17202E" font-weight="600" text-anchor="middle" >Dữ liệu theo người dùng</text>
+<rect x="316" y="242" width="270" height="52" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="451" y="273" font-size="13.5" fill="#17202E" font-weight="600" text-anchor="middle" >So sánh và truy vấn ngược</text>
+<rect x="616" y="242" width="270" height="52" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="751" y="273" font-size="13.5" fill="#17202E" font-weight="600" text-anchor="middle" >An toàn và nhật ký</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="'Be Vietnam Pro','Segoe UI',Arial,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6678"/></marker></defs><rect width="1120" height="520" fill="#F4F6F9"/>
+<rect x="0" y="22" width="1120" height="90" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="62" font-size="15" fill="#1B2B4B" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 1</text>
+<text x="16" y="80" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Database</text>
+<rect x="0" y="112" width="1120" height="90" fill="rgba(23,32,46,0.04)"/>
+<text x="16" y="152" font-size="15" fill="#2F4A7D" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 2</text>
+<text x="16" y="170" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Collection</text>
+<rect x="0" y="202" width="1120" height="90" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="242" font-size="15" fill="#4A6FA5" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 3</text>
+<text x="16" y="260" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Document</text>
+<rect x="0" y="292" width="1120" height="90" fill="rgba(23,32,46,0.04)"/>
+<text x="16" y="332" font-size="15" fill="#7497C4" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 4</text>
+<text x="16" y="350" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Field</text>
+<rect x="0" y="382" width="1120" height="90" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="422" font-size="15" fill="#A5BEDB" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 5</text>
+<text x="16" y="440" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Value</text>
+<path d="M620,74 C620,105 330,105 330,136" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M620,74 C620,105 870,105 870,136" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M330,164 C330,195 330,195 330,226" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M330,254 C330,285 330,285 330,316" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M330,344 C330,375 255,375 255,406" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M330,344 C330,375 405,375 405,406" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M870,164 C870,195 827,195 827,226" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M870,164 C870,195 1030,195 1030,226" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M827,254 C827,285 715,285 715,316" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M827,254 C827,285 940,285 940,316" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M715,344 C715,375 640,375 640,406" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M715,344 C715,375 790,375 790,406" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M940,344 C940,375 940,375 940,406" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<rect x="551.0" y="46" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="551.0" y="46" width="138" height="4" rx="1.5" fill="#1B2B4B"/>
+<text x="620" y="66" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >CongTyA</text>
+<rect x="261.0" y="136" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="261.0" y="136" width="138" height="4" rx="1.5" fill="#2F4A7D"/>
+<text x="330" y="156" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >nhanvien</text>
+<rect x="801.0" y="136" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="801.0" y="136" width="138" height="4" rx="1.5" fill="#2F4A7D"/>
+<text x="870" y="156" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >tailieu</text>
+<rect x="261.0" y="226" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="261.0" y="226" width="138" height="4" rx="1.5" fill="#4A6FA5"/>
+<text x="330" y="246" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >phong_KeToan</text>
+<rect x="758.0" y="226" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="758.0" y="226" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.6"/>
+<rect x="758.0" y="226" width="138" height="4" rx="1.5" fill="#4A6FA5"/>
+<rect x="755.0" y="223" width="144" height="34" rx="5" fill="none" stroke="#D9650B" stroke-width="3"/>
+<text x="827" y="246" font-size="12" fill="#17202E" font-weight="700" text-anchor="middle" >bophan_TaiChinh</text>
+<rect x="961.0" y="226" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="961.0" y="226" width="138" height="4" rx="1.5" fill="#4A6FA5"/>
+<text x="1030" y="246" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >bophan_NhanSu</text>
+<rect x="261.0" y="316" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="261.0" y="316" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.6"/>
+<rect x="261.0" y="316" width="138" height="4" rx="1.5" fill="#7497C4"/>
+<rect x="258.0" y="313" width="144" height="34" rx="5" fill="none" stroke="#2447D0" stroke-width="3"/>
+<text x="330" y="336" font-size="12" fill="#17202E" font-weight="700" text-anchor="middle" >nhom_thue</text>
+<rect x="646.0" y="316" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="646.0" y="316" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="646.0" y="316" width="138" height="4" rx="1.5" fill="#7497C4"/>
+<text x="715" y="336" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >chinhanh_HN</text>
+<rect x="871.0" y="316" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="871.0" y="316" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="871.0" y="316" width="138" height="4" rx="1.5" fill="#7497C4"/>
+<text x="940" y="336" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >chinhanh_HCM</text>
+<rect x="186.0" y="406" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="186.0" y="406" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="186.0" y="406" width="138" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="255" y="426" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >An</text>
+<rect x="336.0" y="406" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="336.0" y="406" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="336.0" y="406" width="138" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="405" y="426" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >Binh</text>
+<rect x="571.0" y="406" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="571.0" y="406" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="571.0" y="406" width="138" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="640" y="426" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >baocao_Q3.pdf</text>
+<rect x="721.0" y="406" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="721.0" y="406" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="721.0" y="406" width="138" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="790" y="426" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >ngansach_2027.xlsx</text>
+<rect x="871.0" y="406" width="138" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="871.0" y="406" width="138" height="28" rx="3" fill="#0E9F6E" opacity="0.25"/>
+<rect x="871.0" y="406" width="138" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="940" y="426" font-size="12" fill="#17202E" font-weight="500" text-anchor="middle" >baocao_HCM_Q3.pdf</text>
+<text x="260" y="302" font-size="11" fill="#17202E" font-weight="700" text-anchor="start" >R1</text>
+<text x="897" y="216" font-size="11" fill="#17202E" font-weight="700" text-anchor="end" >R1</text>
+<rect x="16" y="472" width="1088" height="38" rx="4" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="30" y="484" width="26" height="14" rx="3" fill="#fff" stroke="#2447D0" stroke-width="3"/>
+<text x="62" y="495" font-size="12.5" fill="#17202E" font-weight="400" text-anchor="start" >nút chủ thể của luật</text>
+<rect x="228" y="484" width="26" height="14" rx="3" fill="#fff" stroke="#D9650B" stroke-width="3"/>
+<text x="260" y="495" font-size="12.5" fill="#17202E" font-weight="400" text-anchor="start" >nút đối tượng của luật</text>
+<rect x="436" y="484" width="26" height="14" rx="3" fill="#0E9F6E" opacity="0.25" stroke="#9AA6BA"/>
+<text x="468" y="495" font-size="12.5" fill="#17202E" font-weight="400" text-anchor="start" >nút con kế thừa quyền</text>
+<text x="620" y="495" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="start" >R1: nhom_thue đọc bophan_TaiChinh, nên An và Bình đọc mọi tệp bên dưới.</text>
+</svg>

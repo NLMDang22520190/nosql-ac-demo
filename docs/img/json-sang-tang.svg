@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1090 500" width="1090" height="500" font-family="'Be Vietnam Pro','Segoe UI',Arial,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6678"/></marker></defs><rect width="1090" height="500" fill="#F4F6F9"/>
+<text x="16" y="24" font-size="13" fill="#17202E" font-weight="700" text-anchor="start" >JSON đầu vào (rút gọn từ samples/document.json)</text>
+<text x="16" y="44" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="start" >Mỗi khóa hoặc giá trị trong JSON thành một nút. Tầng của nút do vị trí lồng nhau quyết định.</text>
+<text x="130" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">{ "</text>
+<rect x="157.0" y="70" width="77.0" height="28" rx="4" fill="#1B2B4B"/>
+<text x="195.5" y="90" font-size="15" fill="#fff" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">CongTyA</text>
+<text x="234.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">": { "</text>
+<rect x="288.0" y="70" width="86.0" height="28" rx="4" fill="#2F4A7D"/>
+<text x="331.0" y="90" font-size="15" fill="#fff" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">nhanvien</text>
+<text x="374.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">": [ { "_id": "</text>
+<rect x="509.0" y="70" width="122.0" height="28" rx="4" fill="#4A6FA5"/>
+<text x="570.0" y="90" font-size="15" fill="#fff" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">phong_KeToan</text>
+<text x="631.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">", "</text>
+<rect x="667.0" y="70" width="95.0" height="28" rx="4" fill="#7497C4"/>
+<text x="714.5" y="90" font-size="15" fill="#fff" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">nhom_thue</text>
+<text x="762.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">": ["</text>
+<rect x="807.0" y="70" width="32.0" height="28" rx="4" fill="#A5BEDB"/>
+<text x="823.0" y="90" font-size="15" fill="#17202E" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">An</text>
+<text x="839.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">", "</text>
+<rect x="875.0" y="70" width="50.0" height="28" rx="4" fill="#A5BEDB"/>
+<text x="900.0" y="90" font-size="15" fill="#17202E" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono',Consolas,monospace">Binh</text>
+<text x="925.0" y="90" font-size="15" fill="#5B6678" font-weight="400" text-anchor="start" font-family="'JetBrains Mono',Consolas,monospace" xml:space="preserve">"] } ] } }</text>
+<rect x="0" y="136" width="1090" height="70" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="168" font-size="15" fill="#1B2B4B" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 1</text>
+<text x="16" y="186" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Database</text>
+<rect x="0" y="206" width="1090" height="70" fill="rgba(23,32,46,0.04)"/>
+<text x="16" y="238" font-size="15" fill="#2F4A7D" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 2</text>
+<text x="16" y="256" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Collection</text>
+<rect x="0" y="276" width="1090" height="70" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="308" font-size="15" fill="#4A6FA5" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 3</text>
+<text x="16" y="326" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Document</text>
+<rect x="0" y="346" width="1090" height="70" fill="rgba(23,32,46,0.04)"/>
+<text x="16" y="378" font-size="15" fill="#7497C4" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 4</text>
+<text x="16" y="396" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Field</text>
+<rect x="0" y="416" width="1090" height="70" fill="rgba(255,255,255,0.6)"/>
+<text x="16" y="448" font-size="15" fill="#A5BEDB" font-weight="700" text-anchor="start" font-family="'Bricolage Grotesque','Segoe UI',sans-serif">Tầng 5</text>
+<text x="16" y="466" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Value</text>
+<path d="M195.5,184 C195.5,206 331.0,204 331.0,226" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M331.0,254 C331.0,276 570.0,274 570.0,296" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M570.0,324 C570.0,346 714.5,344 714.5,366" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M714.5,394 C714.5,416 639.5,414 639.5,436" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<path d="M714.5,394 C714.5,416 789.5,414 789.5,436" fill="none" stroke="#B3BCCB" stroke-width="1.5"/>
+<rect x="133.5" y="156" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="133.5" y="156" width="124" height="4" rx="1.5" fill="#1B2B4B"/>
+<text x="195.5" y="176" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >CongTyA</text>
+<rect x="269.0" y="226" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="269.0" y="226" width="124" height="4" rx="1.5" fill="#2F4A7D"/>
+<text x="331.0" y="246" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >nhanvien</text>
+<rect x="508.0" y="296" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="508.0" y="296" width="124" height="4" rx="1.5" fill="#4A6FA5"/>
+<text x="570.0" y="316" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >phong_KeToan</text>
+<rect x="652.5" y="366" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="652.5" y="366" width="124" height="4" rx="1.5" fill="#7497C4"/>
+<text x="714.5" y="386" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >nhom_thue</text>
+<rect x="577.5" y="436" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="577.5" y="436" width="124" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="639.5" y="456" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >An</text>
+<rect x="727.5" y="436" width="124" height="28" rx="3" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<rect x="727.5" y="436" width="124" height="4" rx="1.5" fill="#A5BEDB"/>
+<text x="789.5" y="456" font-size="12.5" fill="#17202E" font-weight="500" text-anchor="middle" >Binh</text>
+<path d="M195.5,100 L195.5,152" fill="none" stroke="#1B2B4B" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75"/>
+<path d="M331.0,100 L331.0,222" fill="none" stroke="#2F4A7D" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75"/>
+<path d="M570.0,100 L570.0,292" fill="none" stroke="#4A6FA5" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75"/>
+<path d="M714.5,100 L714.5,362" fill="none" stroke="#7497C4" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75"/>
+<path d="M823.0,100 L823.0,118 L639.5,118 L639.5,432" fill="none" stroke="#7497C4" stroke-width="1.2" stroke-dasharray="4 4"/>
+<path d="M900.0,100 L900.0,118 L789.5,118 L789.5,432" fill="none" stroke="#7497C4" stroke-width="1.2" stroke-dasharray="4 4"/>
+</svg>

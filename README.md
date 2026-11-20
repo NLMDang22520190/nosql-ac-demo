@@ -6,6 +6,10 @@ Demo này làm lại phần **nền tảng** của bài báo: dữ liệu NoSQL 
 
 Phần sinh luật bằng AI (6 bước) của nhóm chưa có trong bản này.
 
+**Hướng dẫn dùng từng chức năng, kèm sơ đồ luồng và kịch bản demo 7 phút: [docs/HUONG_DAN.md](docs/HUONG_DAN.md).**
+
+![Luồng demo](docs/img/luong-demo.svg)
+
 ## Chạy thử
 
 Cần Node.js 18 trở lên.
@@ -26,8 +30,8 @@ npm run typecheck
 
 | Bước | Màn hình | Chức năng | Mục của bài |
 |---|---|---|---|
-| 1 | Nạp dữ liệu | Chọn 1 trong 4 mẫu hoặc dán/tải JSON. Hệ thống nêu loại NoSQL kèm căn cứ, kèm đoạn mã đưa ra kết luận. Chọn vùng chứa chủ thể và vùng chứa đối tượng. | 3.1 |
-| 2 | Cây hoặc đồ thị | Key-value, wide-column, document dựng thành cây (4 hoặc 5 tầng, mỗi tầng một dải dọc). Graph dựng thành đồ thị có hướng. Dữ liệu sâu quá tầng 5 được gộp và cảnh báo. | 3.1, Fig. 5, 6 |
+| 1 | Nạp dữ liệu | Chọn 1 trong 4 mẫu. Hệ thống nêu loại NoSQL kèm căn cứ, kèm đoạn mã đưa ra kết luận. Chọn vùng chứa chủ thể và vùng chứa đối tượng. | 3.1 |
+| 2 | Cây hoặc đồ thị | Key-value, wide-column, document dựng thành cây vẽ từ trên xuống (4 hoặc 5 tầng, mỗi tầng một dải ngang). Graph dựng thành đồ thị có hướng. Dữ liệu sâu quá tầng 5 được gộp và cảnh báo. | 3.1, Fig. 5, 6 |
 | 3 | Giải thích cách chia | Chạy từng bước: nút nào sinh ra từ đoạn JSON nào. JSON và dòng mã thật trong `src/core/build.ts` được tô sáng. Bảng ánh xạ đường dẫn JSON sang tầng. | 3.1 |
 | 4 | Luật phân quyền | Bấm nút trên hình để chọn thuộc tính chủ thể và đối tượng. Hệ thống đọc lại thành câu tiếng Việt. Luật hiện lên hình: viền xanh dương là chủ thể, viền cam là đối tượng, nền lục là cho phép, nền đỏ là cấm, nút con kế thừa được tô nhạt. | 3.2.1 đến 3.2.3, Fig. 7 đến 10 |
 | 5 | Kiểm tra quyền | Chọn chủ thể, hành động, đối tượng. Kết quả kèm từng bước giải thích, đường đi tô trên hình và dòng mã quyết định. Có sẵn kịch bản gợi ý cho từng mẫu. | 3.2, 3.3 |
@@ -50,7 +54,7 @@ Thư mục `samples/` có 4 tệp JSON, cùng một câu chuyện (công ty A, p
 
 Mỗi tệp gồm `data` (dữ liệu), `rules` (luật mẫu) và `scenarios` (kịch bản kiểm tra kèm kết quả dự kiến). Tệp `tests/samples.test.ts` chạy mọi kịch bản và so với kết quả dự kiến, nên README và demo không thể lệch nhau mà không bị phát hiện.
 
-Dán JSON của riêng bạn được. Hệ thống nhận diện theo hình dạng dữ liệu:
+Muốn thêm mẫu mới, xem mục "Thêm dữ liệu mẫu mới" trong [hướng dẫn](docs/HUONG_DAN.md). Hệ thống nhận diện loại theo hình dạng dữ liệu:
 
 - Có `nodes` và `edges`: graph.
 - Collection chứa mảng đối tượng: document (nhãn document lấy từ `_id`).
@@ -88,6 +92,7 @@ src/core/     lõi, không phụ thuộc giao diện
   jsonlines.ts  in JSON và nhớ dòng của từng đường dẫn
   dataset.ts    ghép các phần trên thành một bộ dữ liệu
 src/ui/       giao diện React
+docs/         hướng dẫn dùng và sơ đồ (SVG)
 samples/      4 mẫu dữ liệu, luật và kịch bản
 tests/        kiểm thử đơn vị cho lõi (vitest)
 ```
@@ -98,5 +103,5 @@ Các chú thích dạng `@step:...`, `@rule:...`, `@detect:...` trong mã nguồ
 
 - Demo không nối CSDL thật (MongoDB, Neo4j...). Lớp phân quyền chạy trên mô hình cây và đồ thị trong bộ nhớ, và việc "viết lại truy vấn" chưa được làm.
 - Không đo hiệu năng.
-- Chỉ phân tích JSON dạng đã mô tả ở trên, không đọc trực tiếp từ dump của một hệ NoSQL cụ thể.
+- Giao diện chỉ nạp 4 mẫu có sẵn. Dữ liệu mới thêm bằng cách tạo tệp trong `samples/`, không dán hay tải lên trực tiếp.
 - Sinh luật bằng AI chưa làm.

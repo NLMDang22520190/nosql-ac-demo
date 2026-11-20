@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" width="960" height="800" font-family="'Be Vietnam Pro','Segoe UI',Arial,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6678"/></marker></defs><rect width="960" height="800" fill="#F4F6F9"/>
+<rect x="140.0" y="20" width="520" height="56" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="400" y="44" font-size="13.5" fill="#17202E" font-weight="700" text-anchor="middle" >Yêu cầu: chủ thể, hành động, đối tượng</text>
+<text x="400" y="64" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >Ví dụ: An, đọc, baocao_Q3.pdf</text>
+<line x1="400" y1="78" x2="400" y2="106" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="140.0" y="108" width="520" height="74" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="400" y="132" font-size="13.5" fill="#17202E" font-weight="700" text-anchor="middle" >Lấy tập thuộc tính của hai bên</text>
+<text x="400" y="152" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >Cây: chuỗi nút tổ tiên (quyền kế thừa từ cha xuống con)</text>
+<text x="400" y="172" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >Graph: mọi nút đi tới được qua cạnh có hướng</text>
+<line x1="400" y1="184" x2="400" y2="212" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="100.0" y="214" width="600" height="96" rx="6" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="400" y="238" font-size="13.5" fill="#17202E" font-weight="700" text-anchor="middle" >Duyệt từng luật, luật nào đạt cả ba điều kiện thì khớp</text>
+<text x="400" y="258" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >1. Hành động của luật có chứa hành động được hỏi</text>
+<text x="400" y="278" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >2. Mọi nút của luật nằm trong tập thuộc tính của hai bên</text>
+<text x="400" y="298" font-size="12.5" fill="#5B6678" font-weight="400" text-anchor="middle" >3. Điều kiện (nếu có) đúng với ngữ cảnh</text>
+<line x1="400" y1="312" x2="400" y2="350" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<polygon points="400,352 570,398 400,444 230,398" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="400" y="403" font-size="13.5" fill="#17202E" font-weight="700" text-anchor="middle" >Có luật cấm khớp?</text>
+<line x1="570" y1="398" x2="650" y2="398" stroke="#C8302A" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="610" y="388" font-size="12" fill="#C8302A" font-weight="700" text-anchor="middle" >có</text>
+<rect x="652" y="368" width="280" height="60" rx="6" fill="#FBEAE9" stroke="#C8302A" stroke-width="1.4"/>
+<text x="792" y="394" font-size="15" fill="#922019" font-weight="700" text-anchor="middle" >Từ chối</text>
+<text x="792" y="414" font-size="12" fill="#922019" font-weight="400" text-anchor="middle" >Cấm luôn thắng cho phép</text>
+<line x1="400" y1="444" x2="400" y2="500" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="414" y="476" font-size="12" fill="#5B6678" font-weight="700" text-anchor="start" >không</text>
+<polygon points="400,502 570,548 400,594 230,548" fill="#fff" stroke="#9AA6BA" stroke-width="1.4"/>
+<text x="400" y="553" font-size="13.5" fill="#17202E" font-weight="700" text-anchor="middle" >Có luật cho phép khớp?</text>
+<line x1="570" y1="548" x2="650" y2="548" stroke="#0E9F6E" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="610" y="538" font-size="12" fill="#0E9F6E" font-weight="700" text-anchor="middle" >có</text>
+<rect x="652" y="518" width="280" height="60" rx="6" fill="#E5F6EF" stroke="#0E9F6E" stroke-width="1.4"/>
+<text x="792" y="544" font-size="15" fill="#086B49" font-weight="700" text-anchor="middle" >Được phép</text>
+<text x="792" y="564" font-size="12" fill="#086B49" font-weight="400" text-anchor="middle" >Kèm danh sách luật đã khớp</text>
+<line x1="400" y1="594" x2="400" y2="650" stroke="#5B6678" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="414" y="626" font-size="12" fill="#5B6678" font-weight="700" text-anchor="start" >không</text>
+<rect x="200" y="652" width="400" height="60" rx="6" fill="#FBEAE9" stroke="#C8302A" stroke-width="1.4"/>
+<text x="400" y="678" font-size="15" fill="#922019" font-weight="700" text-anchor="middle" >Từ chối mặc định</text>
+<text x="400" y="698" font-size="12" fill="#922019" font-weight="400" text-anchor="middle" >Không luật nào khớp thì không được phép</text>
+<text x="130" y="770" font-size="12" fill="#5B6678" font-weight="400" text-anchor="start" >Cấm thắng cho phép và mặc định từ chối là lựa chọn của nhóm, bài báo không quy định.</text>
+</svg>
