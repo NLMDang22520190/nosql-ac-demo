@@ -26,6 +26,29 @@ npm test
 npm run typecheck
 ```
 
+## Đưa lên Netlify
+
+Demo là trang tĩnh, không cần máy chủ hay biến môi trường. Tệp `netlify.toml` đã cấu hình sẵn lệnh build (`npm run build`), thư mục xuất bản (`dist`) và Node 20.
+
+Cách 1, nối với GitHub: vào Netlify, chọn Add new site, Import an existing project, chọn repo này. Giữ nguyên cài đặt Netlify đọc từ `netlify.toml`, bấm Deploy. Mỗi lần push lên `main` Netlify tự build lại.
+
+Cách 2, kéo thả thủ công:
+
+```bash
+npm run build
+```
+
+Rồi kéo thư mục `dist` vào trang https://app.netlify.com/drop.
+
+Kiểm tra bản build trước khi đưa lên:
+
+```bash
+npm run build
+npx vite preview
+```
+
+Trang tải font từ Google Fonts, nên cần có mạng. Khi mất mạng trang vẫn dùng được với font hệ thống.
+
 ## Đi qua demo theo thứ tự
 
 | Bước | Màn hình | Chức năng | Mục của bài |
