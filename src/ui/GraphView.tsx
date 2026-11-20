@@ -1,6 +1,8 @@
 import { useMemo } from 'react'
 import type { GNode, GraphModel } from '../core/types'
+import { fitText } from './fit'
 import { edgeKey, type GMarks } from './marks'
+import { ZoomPane } from './ZoomPane'
 
 const LX = 270 // khoảng cách giữa các cột
 const LY = 78 // khoảng cách giữa các hàng
@@ -68,8 +70,8 @@ function layoutGraph(graph: GraphModel) {
 export function GraphView({ graph, marks, selected = [], focus, onSelect, visible }: Props) {
   const layout = useMemo(() => layoutGraph(graph), [graph])
   return (
-    <div className="viz-scroll">
-      <svg width={layout.w} height={layout.h} role="img" aria-label="Đồ thị có hướng">
+    <ZoomPane width={layout.w} height={layout.h} label="Đồ thị có hướng" resetKey={graph}>
+      <>
         <defs>
           {['#8A96AB', '#2447D0', '#D9650B', '#0E9F6E', '#C8302A'].map((c) => (
             <marker key={c} id={'ar' + c.slice(1)} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -131,14 +133,14 @@ export function GraphView({ graph, marks, selected = [], focus, onSelect, visibl
               <rect width={W} height={H} rx={rx} fill={TYPE_FILL[t] ?? '#EEF0F4'} stroke={TYPE_STROKE[t] ?? '#7A8599'} strokeWidth={1.2} />
               {mk?.tint && <rect width={W} height={H} rx={rx} fill={mk.tint} opacity={mk.tintOpacity ?? 0.4} />}
               {t === 'file' && <path d={`M${W - 14},0 L${W},14 L${W - 14},14 z`} fill={TYPE_STROKE.file} opacity={0.5} />}
-              <text x={W / 2} y={H / 2 + 4} textAnchor="middle" fontSize={12} fontWeight={mk?.bold || isSel ? 700 : 500} fill="#17202E">{n.id.length > 21 ? n.id.slice(0, 20) + '…' : n.id}</text>
+              <text x={W / 2} y={H / 2 + 4} textAnchor="middle" fontSize={12} fontWeight={mk?.bold || isSel ? 700 : 500} fill="#17202E">{fitText(n.id, W - 22)}</text>
               <text x={W / 2} y={H + 12} textAnchor="middle" fontSize={9.5} fill="#5B6678">{TYPE_VI[t] ?? ''}</text>
               {mk?.tag && <text x={W} y={-4} fontSize={10} fill="#17202E" textAnchor="end" fontWeight={700}>{mk.tag}</text>}
               {ring && <rect x={-3} y={-3} width={W + 6} height={H + 6} rx={rx + 3} fill="none" stroke={ring} strokeWidth={isSel || focus === n.id ? 3 : 2.5} />}
             </g>
           )
         })}
-      </svg>
-    </div>
+      </>
+    </ZoomPane>
   )
 }

@@ -43,7 +43,7 @@ Hình dưới cho thấy một đoạn JSON của mẫu Document biến thành c
 
 ### Chủ thể và đối tượng
 
-Chủ thể là người dùng (An, Bình, Chi, Dũng). Đối tượng là thứ họ muốn truy cập (báo cáo, bảng lương). Bài báo giả định cả hai đều nằm trong chính cơ sở dữ liệu NoSQL, nên trên cùng một cây bạn sẽ thấy một nhánh chứa người dùng và một nhánh chứa tệp. Chấm xanh bên phải nút là nhánh chủ thể, chấm cam là nhánh đối tượng.
+Chủ thể là người dùng (An, Bình, Chi, Dũng). Đối tượng là thứ họ muốn truy cập (báo cáo, bảng lương). Bài báo giả định cả hai đều nằm trong chính cơ sở dữ liệu NoSQL, nên trên cùng một cây bạn sẽ thấy một nhánh chứa người dùng và một nhánh chứa tệp. Chấm xanh dương bên phải nút là nhánh chủ thể, chấm cam là nhánh đối tượng.
 
 ### Luật và quyền kế thừa
 
@@ -72,6 +72,16 @@ Có thể chọn lại loại bằng tay để thấy dữ liệu bị dựng th
 ### 2. Cây hoặc đồ thị
 
 Hình bên trái vẽ cây từ trên xuống: gốc ở trên, mỗi tầng là một dải ngang có tên tầng ở bên trái. Graph vẽ thành đồ thị, cột bên phải là các đơn vị lớn nhất.
+
+Khung hình có thanh công cụ ở góc trên bên phải: dấu cộng và trừ để phóng to, thu nhỏ, "Vừa khung" để thu cả cây hoặc đồ thị vào khung xem toàn bộ, "100%" để về kích thước thật. Có thể giữ Ctrl và lăn chuột để phóng to tại chỗ con trỏ, và kéo thả để di chuyển.
+
+Dải chú giải ngay dưới hình giải thích các ký hiệu. Với cây:
+
+- Chấm xanh dương ở góc phải nút: nút thuộc vùng chủ thể (người dùng).
+- Chấm cam: nút thuộc vùng đối tượng (tệp, dữ liệu).
+- Thanh màu trên đầu nút: màu của tầng, đậm là tầng nông, nhạt là tầng sâu.
+
+Ở bước 4 và 5, chú giải có thêm các màu của luật và của đường đi (viền xanh dương, viền cam, nền lục, nền đỏ, nền nhạt cho nút kế thừa).
 
 Bấm một nút để xem tầng, đường dẫn JSON của nó và chuỗi nút cha mà nó thừa hưởng quyền. Nếu dữ liệu sâu hơn 5 tầng, phần dưới bị gộp thành một Value và có cảnh báo, đúng với hạn chế bài nêu.
 

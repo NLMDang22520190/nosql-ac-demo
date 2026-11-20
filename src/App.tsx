@@ -7,6 +7,7 @@ import type { Action, DbKind, Decision, Rule } from './core/types'
 import { CheckTab } from './ui/CheckTab'
 import { ExplainTab, TreeTab } from './ui/ExplainTab'
 import { GraphView } from './ui/GraphView'
+import { Legend } from './ui/Legend'
 import { KIND_VI, LoadTab } from './ui/LoadTab'
 import { decisionMarksGraph, decisionMarksTree, ruleMarksGraph, ruleMarksTree, type GMarks, type Marks } from './ui/marks'
 import { CompareTab, SafetyTab, ViewTab, type AuditEntry } from './ui/MoreTabs'
@@ -211,6 +212,7 @@ export function App() {
           ) : (
             <GraphView graph={ds.graph!} marks={graphMarks} selected={selectedNodes} focus={focus} onSelect={onNode} visible={visible} />
           )}
+          <Legend kind={ds.tree ? 'tree' : 'graph'} overlay={tab === 'rules' || tab === 'check'} />
         </main>
       )}
       <aside className="inspector" aria-label="Bảng điều khiển">

@@ -1,13 +1,15 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { LEVEL_NAMES } from '../core/build'
 import type { TreeModel } from '../core/types'
+import { fitText } from './fit'
 import type { Marks } from './marks'
+import { ZoomPane } from './ZoomPane'
 
 // Độ sâu của tầng thể hiện bằng độ đậm của một tông xanh (tầng 1 đậm nhất).
 export const DEPTH = ['#1B2B4B', '#2F4A7D', '#4A6FA5', '#7497C4', '#A5BEDB']
 const GUT = 118 // cột nhãn tầng bên trái
-const SP = 148 // khoảng cách ngang giữa hai nút lá
-const BW = 136
+const SP = 170 // khoảng cách ngang giữa hai nút lá
+const BW = 156
 const BH = 26
 const ROWH = 96 // chiều cao mỗi dải tầng
 const HEAD = 8
@@ -37,17 +39,11 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
     walk(model.rootId)
     return { pos, w: GUT + 24 + Math.max(leaf, 1) * SP, h: HEAD * 2 + model.maxLevel * ROWH }
   }, [model])
-  const box = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    // đưa nút gốc vào giữa khung nhìn khi đổi dữ liệu
-    const b = box.current
-    if (b) b.scrollLeft = Math.max(0, layout.pos[model.rootId].x + BW / 2 - b.clientWidth / 2)
-  }, [model, layout])
   const names = LEVEL_NAMES[model.kind].slice(0, model.maxLevel)
   const inRoot = (id: string, roots: string[]) => roots.some((r) => id === r || id.startsWith(r + '/'))
   return (
-    <div className="viz-scroll" ref={box}>
-      <svg width={layout.w} height={layout.h} role="img" aria-label="Cây phân tầng">
+    <ZoomPane width={layout.w} height={layout.h} label="Cây phân tầng" centerX={layout.pos[model.rootId].x + BW / 2} resetKey={model}>
+      <>
         {names.map((nm, i) => (
           <g key={nm}>
             <rect x={0} y={HEAD + i * ROWH} width={layout.w} height={ROWH} fill={i % 2 ? 'rgba(23,32,46,0.04)' : 'rgba(255,255,255,0.6)'} />
@@ -74,7 +70,7 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
           const base = DEPTH[n.level - 1]
           const isSel = selected.includes(id)
           const role = inRoot(id, subjectRoots) ? 'S' : inRoot(id, objectRoots) ? 'O' : ''
-          const label = n.label.length > 17 ? n.label.slice(0, 16) + '…' : n.label
+          const label = fitText(n.label, BW - 30)
           const ring = isSel ? '#17202E' : focus === id ? '#F2B01E' : mk?.ring
           return (
             <g key={id} transform={`translate(${p.x},${p.y})`} onClick={() => onSelect?.(id)} style={{ cursor: onSelect ? 'pointer' : 'default' }} opacity={mk?.dim ? 0.18 : 1} data-node={id}>
@@ -89,7 +85,7 @@ export function TreeView({ model, marks = {}, selected = [], onSelect, subjectRo
             </g>
           )
         })}
-      </svg>
-    </div>
+      </>
+    </ZoomPane>
   )
 }
